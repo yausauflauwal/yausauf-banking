@@ -31,7 +31,7 @@ export const getUserInfo = async ({ userId }: getUserInfoProps) => {
   }
 }
 
-export const signIn = async ({email, password}: SignUpParams) => {
+export const signIn = async ({email, password}: signInProps) => {
     try {
        const {account} = await createAdminClient();
        const session = await account.createEmailPasswordSession(email, password);
@@ -158,7 +158,7 @@ export const createLinkToken = async (user: User) => {
     accountId,
     accessToken,
     fundingSourceUrl,
-    sharableId,
+    shareableId,
   }: createBankAccountProps) => {
     try {
       const { database } = await createAdminClient();
@@ -173,7 +173,7 @@ export const createLinkToken = async (user: User) => {
           accountId,
           accessToken,
           fundingSourceUrl,
-          sharableId,
+          shareableId,
         }
       )
   
@@ -230,7 +230,7 @@ export const exchangePublicToken = async ({
       accountId: accountData.account_id,
       accessToken,
       fundingSourceUrl,
-      sharableId: encryptId(accountData.account_id),
+      shareableId: encryptId(accountData.account_id),
     });
 
     // Revalidate the path to reflect the changes
